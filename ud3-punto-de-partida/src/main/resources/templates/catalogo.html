@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="utf-8">
+        <title>Catalogo</title>
+    </head>
+    <body>
+    <h1 th:text="|Número de orden: ${numero_orden}|">Número de orden</h1>
+    <p th:if="${catalogo.isEmpty()}">No hay articulos que mostrar.</p>
+    <table>
+        <tr><th>Articulo</th><th>Nombre</th><th>Precio</th><th>Stock</th></tr>
+        <tr th:each="a, estado : ${catalogo}">
+            <td th:text="${estado.count}">1</td>
+            <td th:text="${a.nombre}">Nombre de ejemplo</td>
+            <td th:text="${a.precio}">0,00</td>
+            <td>
+                <span th:if="${a.stock > 0}">Disponible</span>
+                <span th:unless="${a.stock > 0}">Agotado</span>
+            </td>
+        </tr>
+    </table>
+    </body>
+</html>

@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="es"xmlns:xmls="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8">
+    <title>Catalogo Librería</title>
+    <link rel="stylesheet" th:href="@{/style.css}">
+</head>
+<body>
+    <header>
+        <h1>Mi Librería</h1>
+        <form action="get">
+            <label for="title">TÍTULO</label><input type="text" id="title" name="title">
+            <label for="author">AUTOR</label><input type="text" id="author" name="author">
+            <select id="genres" name="genres">
+                <option value="Fan">Fantasía</option>
+                <option value="Dra">Drama</option>
+                <option value="Rom">Romance</option>
+                <option value="Com">Comedia</option>
+                <option value="Mis">Misterio</option>
+                <option value="Ter">Terror</option>
+                <option value="His">Histórico</option>
+                <option value="CiF">Ciencia Ficción</option>
+                <option value="Man">Manual</option>
+                <option value="Com">Contemporáneo</option>
+                <option value="Pol">Política</option>
+                <option value="Poe">Poesía</option>
+                <option value="Ave">Aventura</option>
+                <option value="Inf">Infantil</option>
+            </select>
+            <input type="submit" value="Buscar">
+        </form>
+    </header>
+    <div id="list">
+        <!--<p th:if="${catalog.isEmpty()}">No hay artículos que mostrar</p>-->
+        <table>
+            <tr><th>Título</th><th>Género</th><th>Autor</th><th>Fecha Publicación</th><th>Disponibilidad</th></tr>
+            <tr th:each="x: ${form}">
+                <td th:text="${x.title}">Título</td>
+                <td th:text="${x.genres}">Géneros</td>
+                <td th:text="${x.author}">Autor</td>
+                <td>
+                    <span th:if="${x.date.isEmpty()}">Desconocida</span>
+                    <span th:if="${!x.date.isEmpty()}" th:text="${x.date}">Fecha De Publicación</span>
+                </td>
+                <td>
+                    <span th:if="${x.copies <= 0}">No Disponible</span>
+                    <span th:if="${x.copies > 0}" th:text="${x.copies}">Copias</span>
+                </td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>

@@ -1,0 +1,23 @@
+body{
+    background-color: lightblue;
+}
+table{
+    border-color: black;
+    padding: 2px;
+    border: 2px solid;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: bisque;
+}
+td{
+    border: 2px solid;
+    border-color: black;
+    padding: 2px;
+}
+tr{
+    margin: 3px auto;
+}
+header{
+    padding: 20px;
+    text-align: center;
+}

@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <title>Catalogo · Bit a Bit</title>
+</head>
+<body>
+
+    <h1>Bit a Bit · catalogo</h1>
+    <p th:text="'Idioma: ' + ${idioma}"></p>
+    <form action="/catalogo" method="get">
+        <label for="tipo">Tipo</label>
+        <select id="tipo" name="tipo">
+            <option value="">Todos</option>
+            <option value="periferico">Perifericos</option>
+            <option value="pantalla">Pantallas</option>
+            <option value="almacen">Almacenamiento</option>
+        </select>
+        <button type="submit">Filtrar</button>
+    </form>
+
+    <p th:if="${catalogo.isEmpty()}">No hay articulos de ese tipo.</p>
+
+    <table th:unless="${catalogo.isEmpty()}" border="1">
+        <tr>
+            <th>#</th>
+            <th>Articulo</th>
+            <th>Precio</th>
+            <th>Estado</th>
+        </tr>
+        <tr th:each="a, e : ${catalogo}">
+            <td th:text="${e.count}">0</td>
+            <td th:text="${a.nombre}">Ejemplo</td>
+            <td th:text="${a.precio}">0,00</td>
+            <td>
+                <span th:if="${a.stock > 0}">Disponible</span>
+                <span th:unless="${a.stock > 0}">Sin stock</span>
+            </td>
+        </tr>
+    </table>
+
+    <p><a href="/pedido">Hacer un pedido</a></p>
+    <p><a href="/carrito">Ver carrito</a></p>
+
+</body>
+</html>

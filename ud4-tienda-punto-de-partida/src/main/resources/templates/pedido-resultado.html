@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <title>Pedido calculado · Bit a Bit</title>
+</head>
+<body>
+
+    <h1>Pedido calculado</h1>
+    <p th:text="'Idioma: ' + ${idioma}"></p>
+    <p>
+        <span th:text="${unidades}">0</span>
+        x
+        <span th:text="${articulo.nombre}">Articulo</span>
+    </p>
+
+    <h2 th:text="'Total: ' + ${total} + ' EUR'">Total</h2>
+
+    <h3>Historial</h3>
+    <p th:if="${historial.isEmpty()}">Todavia no hay pedidos.</p>
+    <table th:unless="${historial.isEmpty()}" border="1">
+        <tr>
+            <th>Articulo</th>
+            <th>Unidades</th>
+            <th>Total</th>
+        </tr>
+        <tr th:each="p : ${historial}">
+            <td th:text="${p.articulo}">-</td>
+            <td th:text="${p.unidades}">0</td>
+            <td th:text="${p.total}">0,00</td>
+        </tr>
+    </table>
+
+    <p><a href="/pedido">Otro pedido</a> · <a href="/catalogo">Catalogo</a></p>
+
+</body>
+</html>

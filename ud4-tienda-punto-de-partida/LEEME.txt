@@ -1,0 +1,38 @@
+TIENDA BIT A BIT · PUNTO DE PARTIDA DE LA UD4
+Desarrollo web en entorno servidor 0613 · 2.o DAW · Curso 26/27
+
+QUE ES ESTO
+Es la tienda de la prueba del RA3, ya montada y funcionando. Se publica para
+que todos arranquemos la UD4 desde el mismo sitio: si tu version se quedo a
+medias, usa esta y no pierdas tiempo.
+
+COMO SE ARRANCA
+  1. Abrelo en IntelliJ como proyecto Maven (File > Open, y eliges el pom.xml).
+  2. Ejecuta TiendaApplication.
+  3. Entra en   http://localhost:8080/catalogo
+
+QUE HAY DENTRO
+  Articulo.java            un articulo del catalogo (nombre, tipo, precio, stock)
+  Catalogo.java            los seis articulos, escritos en el codigo
+  CatalogoControlador.java GET /catalogo, con el filtro por tipo que puede no venir
+  PedidoForm.java          la clase CON set que recoge el formulario
+  Pedido.java              el pedido ya calculado, el que se guarda
+  PedidoControlador.java   GET /pedido y POST /pedido, con validacion y cuentas
+
+  templates/catalogo.html          la tabla, con th:each y th:if/th:unless
+  templates/pedido-formulario.html el formulario, con th:object y th:field
+  templates/pedido-resultado.html  el total y el historial
+
+LAS REGLAS DE LA TIENDA
+  - 5 % de descuento si se compran 3 unidades o mas.
+  - Envio 6,95 EUR, GRATIS si el pedido llega a 150 EUR sin IVA O si el cliente
+    es socio.
+  - IVA del 21 % al final, sobre todo lo demas.
+
+EL AGUJERO QUE VAMOS A ARREGLAR EN LA UD4
+El historial esta en un atributo de PedidoControlador. Pruebalo: haz un pedido,
+abre la misma direccion en una ventana de incognito y veras el pedido de la
+otra ventana. Esa lista es UNA sola para todos los clientes, y ademas se pierde
+al parar el servidor.
+
+NO HACE FALTA TOCAR NADA PARA EMPEZAR. La sesion 1 trabaja sobre este proyecto.

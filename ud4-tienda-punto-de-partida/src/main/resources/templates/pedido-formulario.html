@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <title>Nuevo pedido · Bit a Bit</title>
+</head>
+<body>
+
+    <h1>Nuevo pedido</h1>
+    <p><span  th:text="'Idioma: ' + ${idioma}"></span></p>
+    <ul th:if="${errores}">
+        <li th:each="e : ${errores}" th:text="${e}">Mensaje de ejemplo</li>
+    </ul>
+
+    <form th:action="@{/pedido}" th:object="${form}" method="post">
+
+        <label for="articulo">Articulo</label>
+        <select th:field="*{articulo}">
+            <option th:each="a : ${catalogo}"
+                    th:value="${a.nombre}"
+                    th:text="${a.nombre}">Ejemplo</option>
+        </select>
+
+        <label for="unidades">Unidades</label>
+        <input type="number" th:field="*{unidades}" min="1" max="20">
+
+        <label>
+            <input type="checkbox" th:field="*{socio}"> Soy socio
+        </label>
+
+        <button type="submit">Calcular</button>
+    </form>
+
+    <p><a href="/catalogo">Volver al catalogo</a></p>
+
+</body>
+</html>

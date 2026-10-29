@@ -8,27 +8,32 @@
 
 <h1>Tu carrito</h1>
 
+<div>
+    <h3 th:text="'Sumatorio total en este carrito: ' + ${sumatorio}"></h3>
+</div>
+
 <p th:if="${#lists.isEmpty(carrito)}">Tu carrito está vacío</p>
 
-<table th:unless="${#lists.isEmpty(carrito)}" border="1">
+<table th:unless="${#lists.isEmpty(carrito)}">
     <tr>
         <th>#</th>
-        <th>Artículo</th>
+        <th>Artículo / Pedido</th>
     </tr>
-    <tr th:each="item, e : ${carrito}">
+    <tr th:each="i, e : ${carrito}">
         <td th:text="${e.count}">0</td>
-        <td th:text="${item}">Ejemplo</td>
+        <td th:text="${i}">Ejemplo</td>
     </tr>
 </table>
 
-<p th:text="'Artículos: ' + ${total}">Artículos: 0</p>
+<p th:text="'Número de artículos: ' + ${total}">Artículos: 0</p>
 
-<div style="margin-top: 20px;">
-    <form action="/carrito/vaciar" method="post" style="display:inline;">
+<div>
+    <form action="/carrito/vaciar" method="post">
         <button type="submit">Vaciar carrito</button>
     </form>
 
     <a href="/catalogo"><button type="button">Ir al catálogo</button></a>
+    <a href="/pedido"><button type="button">Hacer otro pedido</button></a>
 </div>
 
 </body>

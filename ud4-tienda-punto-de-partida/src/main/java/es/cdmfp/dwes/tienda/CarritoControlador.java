@@ -36,6 +36,8 @@ public class CarritoControlador {
         List<String> carrito = carritoDe(session);
         model.addAttribute("carrito", carrito);
         model.addAttribute("total", carrito.size());
+        model.addAttribute("sumatorio", carrito.size());
+
         return "carrito";
     }
 
